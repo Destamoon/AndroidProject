@@ -77,19 +77,8 @@ public class MainActivity extends Activity {
 	public void setupContactListView() {
 
 		
-//		contactsList.add(new Contact("Alistair", "Dumper", "02102755644"));
-//		insert(new Contact("Alistair"));
-//		
-//		contactsList.add(new Contact("Abby"));
-//		insert(new Contact("Abby"));
-//		
-//		contactsList.add(new Contact("Adam"));
-//		insert(new Contact("Adam"));
-		
-		
-		
+	
 		ListAdapter listadapter = new CustomListAdapter();
-		
 		
 
 		contacts.setAdapter(listadapter);
@@ -212,24 +201,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
-	public void insert(Contact contact){
-		db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
-		ContentValues values = new ContentValues();
-		values.put(dbconstants.CONTACT_FIRST, contact.getFirstName());
-		values.put(dbconstants.CONTACT_LAST, contact.getLastName());
-		values.put(dbconstants.CONTACT_MOBILE, contact.getMobile());
-		
-		db.insert(dbconstants.TABLE_NAME, null, values);
-		db.close();
-		
-		dbconstants.currentId++;
-		
-				
-		
-		
-		
-		
-	}
+
 	
 	private void updateDB() { 
 		db = openOrCreateDatabase(dbconstants.DATABASE_NAME, MODE_PRIVATE, null); 
