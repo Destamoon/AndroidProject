@@ -22,7 +22,7 @@ public class NewContact extends Activity {
 	private EditText home;
 	private EditText work;
 	private EditText email;
-	private EditText Address;
+	private EditText address;
 	private EditText DOB;
 	
 
@@ -37,6 +37,8 @@ public class NewContact extends Activity {
 		home = (EditText) findViewById(R.id.newHome);
 		work = (EditText) findViewById(R.id.newWork);
 		email = (EditText) findViewById(R.id.newEmail);
+		address = (EditText) findViewById(R.id.newAddress);
+		DOB = (EditText) findViewById(R.id.newDOB);
 		
 		
 		
@@ -71,8 +73,8 @@ public class NewContact extends Activity {
 			 String saveHome = home.getText().toString();
 			 String saveWork = work.getText().toString();
 			 String saveEmail = email.getText().toString();
-			 String saveAddress="";
-			 String saveDOB="";
+			 String saveAddress=address.getText().toString();;
+			 String saveDOB=DOB.getText().toString();;
 			 
 			 Contact newContact = new Contact (dbconstants.currentId, saveFirstName, saveLastName, saveMobile, saveHome, saveWork, saveEmail, saveAddress, saveDOB);
 			 
@@ -87,6 +89,8 @@ public class NewContact extends Activity {
 			 values.put(dbconstants.CONTACT_HOME, newContact.getHome());
 			 values.put(dbconstants.CONTACT_WORK, newContact.getWork());
 			 values.put(dbconstants.CONTACT_EMAIL, newContact.getEmail());
+			 values.put(dbconstants.CONTACT_ADDRESS, newContact.getAddress());
+			 values.put(dbconstants.CONTACT_DOB, newContact.getDOB());
 			
 				
 			 MainActivity.db.insert(dbconstants.TABLE_NAME, null, values);
