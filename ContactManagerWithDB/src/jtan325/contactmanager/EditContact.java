@@ -106,6 +106,8 @@ public class EditContact extends Activity {
 			 String saveHome = home.getText().toString();
 			 String saveWork = work.getText().toString();
 			 String saveEmail = email.getText().toString();
+			 String saveAddress = address.getText().toString();
+			 String saveDOB = DOB.getText().toString();
 			 
 			
 			 
@@ -121,6 +123,8 @@ public class EditContact extends Activity {
 			 values.put(dbconstants.CONTACT_HOME, saveHome);
 			 values.put(dbconstants.CONTACT_WORK, saveWork);
 			 values.put(dbconstants.CONTACT_EMAIL, saveEmail);
+			 values.put(dbconstants.CONTACT_ADDRESS, saveAddress);
+			 values.put(dbconstants.CONTACT_DOB, saveDOB);
 			
 			 Log.d(NewContact.TAG, "Successfully created contents value for "+ ContactDetails.contactClicked.getFirstName());
 				
@@ -136,6 +140,8 @@ public class EditContact extends Activity {
 			 ContactDetails.contactClicked.setHome(saveHome);
 			 ContactDetails.contactClicked.setWork(saveWork);
 			 ContactDetails.contactClicked.setEmail(saveEmail);
+			 ContactDetails.contactClicked.setAddress(saveAddress);
+			 ContactDetails.contactClicked.setDOB(saveDOB);
 			 
 			  
 			 finish();
