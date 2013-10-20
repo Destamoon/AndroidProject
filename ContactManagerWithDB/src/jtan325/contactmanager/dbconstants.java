@@ -11,6 +11,10 @@ public class dbconstants {
 	final static String CONTACT_HOME = "home";
 	final static String CONTACT_WORK = "work";
 	final static String CONTACT_EMAIL = "email";
+	final static String CONTACT_ADDRESS = "address";
+	final static String CONTACT_DOB = "DOB";
+	
+	
 	
 	public static final String DATABASE_CREATE = 
 			"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" 
@@ -20,7 +24,9 @@ public class dbconstants {
 			+ CONTACT_MOBILE + " TEXT,"
 			+ CONTACT_HOME + " TEXT,"
 			+ CONTACT_WORK + " TEXT,"
-			+ CONTACT_EMAIL + " TEXT);";
+			+ CONTACT_EMAIL + " TEXT,"
+			+ CONTACT_ADDRESS + " TEXT,"
+			+ CONTACT_DOB + " TEXT);";
 			
 	
 	
