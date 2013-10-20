@@ -57,7 +57,7 @@ public class ContactDetails extends Activity {
 	//it sets all the textViews with the correct text to display
 	private void setupContactInfo(){
 		
-//		displayee = new Contact("Adam", "Strange","+64 21072123", "09 535318","2682826", "adams@gmail.com","121 Udys Road","15/08/1993");
+
 		
 		
 		mobile = (TextView)findViewById(R.id.mobile_field);
@@ -121,7 +121,9 @@ public class ContactDetails extends Activity {
 	public void onResume(){
 		
 		super.onResume();
+		
 		setTitle(contactClicked.getFirstName() + " " + contactClicked.getLastName());
+		
 		mobile.setText("Mobile: " + contactClicked.getMobile());
 		home.setText("Home: " + contactClicked.getHome());
 		work.setText("Work: " + contactClicked.getWork());
