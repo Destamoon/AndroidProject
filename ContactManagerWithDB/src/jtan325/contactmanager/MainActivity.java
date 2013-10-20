@@ -259,9 +259,8 @@ public class MainActivity extends Activity {
 				home = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_HOME)); 
 				work = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_WORK)); 
 				email = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_EMAIL)); 
-				
-//				dob = rows.getString(rows.getColumnIndexOrThrow(dbconstants.COLUMN_DOB)); 
-//				address = rows.getString(rows.getColumnIndexOrThrow(dbconstants.COLUMN_ADDRESS));
+				address = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_ADDRESS));
+				DOB = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_DOB)); 
 				
 				Log.i("MainActivity", "ID - "+id +" is " + firstName);
 				
