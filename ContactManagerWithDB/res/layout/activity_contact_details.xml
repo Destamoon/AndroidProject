@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactDetails" >
+
+   
+    
+   
+
+    <ScrollView
+        android:id="@+id/contactFields"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:background="@drawable/blueborder"
+        android:padding="10px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/mobile_field"
+                android:layout_width="295dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:padding="10px"
+                android:background="@drawable/border2" />
+            
+             <TextView
+                android:id="@+id/home_field"
+                android:layout_width="295dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                style="@style/contactField" />
+             
+             <TextView
+                android:id="@+id/work_field"
+                android:layout_width="295dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                style="@style/contactField" />
+             
+             <TextView
+                android:id="@+id/email_field"
+                android:layout_width="295dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                style="@style/contactField" />
+                        
+             <TextView
+                android:id="@+id/address_field"
+                android:layout_width="295dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                style="@style/contactField" />
+             
+             <TextView
+                android:id="@+id/DOB_field"
+                android:layout_width="295dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                style="@style/contactField" />
+             
+             
+            
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/adamCage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/contactFields"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/adam" />
+
+</RelativeLayout>

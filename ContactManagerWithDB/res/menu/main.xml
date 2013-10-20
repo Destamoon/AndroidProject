@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/add_contact"
+        android:orderInCategory="999"
+        android:showAsAction="always"
+        android:title="Add"
+        android:icon="@drawable/plus"/>
+    
+   
+
+</menu>
