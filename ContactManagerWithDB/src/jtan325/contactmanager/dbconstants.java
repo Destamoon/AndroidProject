@@ -1,7 +1,11 @@
 package jtan325.contactmanager;
 
+
+
+//Class that just contains constants used for the database
 public class dbconstants {
 	
+	//database columns fields
 	public final static String DATABASE_NAME = "Contacts.db";
 	final static String TABLE_NAME = "contactsTable";
 	final static String CONTACT_ID = "id";
@@ -15,7 +19,7 @@ public class dbconstants {
 	final static String CONTACT_DOB = "DOB";
 	
 	
-	
+	//database create query
 	public static final String DATABASE_CREATE = 
 			"CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" 
 			+ CONTACT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," 
@@ -30,7 +34,7 @@ public class dbconstants {
 			
 	
 	
-	
+	//an incremented id field used to ensure each contact created has a unique id 
 	protected static int currentId = 0;
 	
 	

@@ -15,11 +15,8 @@ import android.widget.EditText;
 
 public class EditContact extends Activity {
 	
+	
 	private ContactsList contactsList = ContactsList.getInstance();
-	
-	
-	
-	
 	
 	private EditText firstName;
 	private EditText lastName;
@@ -66,8 +63,8 @@ public class EditContact extends Activity {
 	
 	private void setupContactInfo(){
 		
-		//		displayee = new Contact("Adam", "Strange","+64 21072123", "09 535318","2682826", "adams@gmail.com","121 Udys Road","15/08/1993");
 		
+		//matching the edittext fields with XML
 		firstName =(EditText) findViewById(R.id.first_name);
 		lastName =(EditText) findViewById(R.id.last_name);
 		mobile = (EditText)findViewById(R.id.mobile_edit);
@@ -77,7 +74,7 @@ public class EditContact extends Activity {
 		address = (EditText)findViewById(R.id.address_edit);
 		DOB = (EditText)findViewById(R.id.DOB_edit);
 
-		
+		//loading current contact data into respective the edittext fields
 		firstName.setText(ContactDetails.contactClicked.getFirstName());
 		lastName.setText(ContactDetails.contactClicked.getLastName());
 		mobile.setText(ContactDetails.contactClicked.getMobile());
@@ -96,10 +93,11 @@ public class EditContact extends Activity {
 	 public boolean onOptionsItemSelected(MenuItem item) { 
 		 switch (item.getItemId()) { 
 		 
-		//clicking on the "save" button saves all edited details and redirects to the contact details screen, in this prototype the save functionality has not been implemented
+		//clicking on the "save" button saves all edited details and redirects to the contact details screen.
 		 case R.id.save: 
 			 
 			 
+			 //saving the new values of the edittext 
 			 String saveFirstName = firstName.getText().toString();
 			 String saveLastName = lastName.getText().toString();
 			 String saveMobile = mobile.getText().toString();
@@ -115,6 +113,7 @@ public class EditContact extends Activity {
 			 
 			 Log.d(NewContact.TAG, "Attempting to save editted details: " + saveFirstName);
 			 
+			 //updating and changing the database values for the editted values
 			 MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
 			 ContentValues values = new ContentValues();
 			 values.put(dbconstants.CONTACT_FIRST, saveFirstName);
@@ -129,11 +128,9 @@ public class EditContact extends Activity {
 			 Log.d(NewContact.TAG, "Successfully created contents value for "+ ContactDetails.contactClicked.getFirstName());
 				
 			 MainActivity.db.update(dbconstants.TABLE_NAME, values, dbconstants.CONTACT_FIRST+ " = ?", new String[] {ContactDetails.contactClicked.getFirstName()});
-			 
 			 MainActivity.db.close();
 			 
-//			 Log.d(NewContact.TAG, "Database is updated");
-			 
+			 //updating the contact object in the contactList to be consistent with the current changes
 			 ContactDetails.contactClicked.setFirstName(saveFirstName);
 			 ContactDetails.contactClicked.setLastName(saveLastName);
 			 ContactDetails.contactClicked.setMobile(saveMobile);
@@ -156,7 +153,7 @@ public class EditContact extends Activity {
 			 break;
 		 
 		 //clicking on the "delete" button opens up a dialogue box prompting the user and then deleting the contact if the accept.
-		 //The delete functionality has not been implemented completely, it only deletes the last contact in the list as opposed to the selected contact.
+		 //delete functionality has been correctly implemented 
 		 case R.id.delete:
 			 
 			
@@ -172,21 +169,19 @@ public class EditContact extends Activity {
 						
 				 public void onClick(DialogInterface dialog, int which) {
 								
-					 
+					//removing the value from the database 
 					MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
 					Log.d(NewContact.TAG, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'");
 					boolean deleted = MainActivity.db.delete(dbconstants.TABLE_NAME, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'", null) >0; 
-					//Also remove it from the _contactList being displayed 
 					
+					//removing the contact from the contactList 
 					String name = ContactDetails.contactClicked.toString();
 					Log.d(NewContact.TAG, "Successfully deleted " +name+" from database");
-					
-					
-					
+				
 					contactsList.delete(ContactDetails.contactClicked);
 					MainActivity.db.close();
 					 
-								
+					//going 2 screens back to the main activity			
 					Intent a = new Intent(EditContact.this,MainActivity.class);
 					a.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(a);
