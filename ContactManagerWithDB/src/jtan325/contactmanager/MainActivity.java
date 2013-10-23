@@ -217,6 +217,7 @@ public class MainActivity extends Activity {
 		String email = ""; 
 		String address = ""; 
 		String DOB = ""; 
+		String photoPath="";
 		
 		
 		
@@ -233,10 +234,11 @@ public class MainActivity extends Activity {
 				email = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_EMAIL)); 
 				address = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_ADDRESS));
 				DOB = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_DOB)); 
+				photoPath = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_IMAGE)); 
 				
 				Log.i("MainActivity", "ID - "+id +" is " + firstName);
 				//ADD EXTRA COLUMN IN DATABASE, SAVE PHOTOPATH INTO IT
-				Contact tryAdd = new Contact(id, firstName, lastName, mobile, home, work, email, address, DOB, ""); 
+				Contact tryAdd = new Contact(id, firstName, lastName, mobile, home, work, email, address, DOB, photoPath); 
 				boolean toAdd = true; 
 				
 				for (Contact contact : contactsList.getList()) { 

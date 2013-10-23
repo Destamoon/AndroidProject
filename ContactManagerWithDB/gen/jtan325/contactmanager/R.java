@@ -40,12 +40,12 @@ public final class R {
         public static final int DOB_edit=0x7f09000e;
         public static final int DOB_field=0x7f090006;
         public static final int Names_and_pic=0x7f090008;
-        public static final int adamCage=0x7f090007;
         public static final int add_contact=0x7f090022;
         public static final int address_edit=0x7f09000d;
         public static final int address_field=0x7f090005;
         public static final int backgroundBar=0x7f09000f;
         public static final int contactFields=0x7f090000;
+        public static final int contactImage=0x7f090007;
         public static final int delete=0x7f090021;
         public static final int edit=0x7f09001f;
         public static final int email_edit=0x7f09000c;

@@ -2,19 +2,13 @@ package jtan325.contactmanager;
 
 
 
-import jtan325.contactmanager.R;
-
 import android.app.Activity;
-
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ContactDetails extends Activity {
@@ -30,6 +24,7 @@ public class ContactDetails extends Activity {
 	private TextView email;
 	private TextView address;
 	private TextView DOB;
+	private ImageView image;
 	
 
 	@Override
@@ -66,6 +61,7 @@ public class ContactDetails extends Activity {
 		email = (TextView)findViewById(R.id.email_field);
 		address = (TextView)findViewById(R.id.address_field);
 		DOB = (TextView)findViewById(R.id.DOB_field);
+		image= (ImageView)findViewById(R.id.contactImage);
 
 		
 		mobile.setText("Mobile: " + contactClicked.getMobile());
@@ -74,6 +70,7 @@ public class ContactDetails extends Activity {
 		email.setText("Emails: " + contactClicked.getEmail());
 		address.setText("Address: " + contactClicked.getAddress());
 		DOB.setText("DOB: " + contactClicked.getDOB());
+		image.setImageBitmap(BitmapFactory.decodeFile(contactClicked.getPhotoPath()));
 		
 	}
 	
@@ -130,6 +127,7 @@ public class ContactDetails extends Activity {
 		email.setText("Emails: " + contactClicked.getEmail());
 		address.setText("Address: " + contactClicked.getAddress());
 		DOB.setText("DOB: " + contactClicked.getDOB());
+		image.setImageBitmap(BitmapFactory.decodeFile(contactClicked.getPhotoPath()));
 		
 	}
 	

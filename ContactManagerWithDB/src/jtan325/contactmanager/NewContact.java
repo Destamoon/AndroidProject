@@ -147,6 +147,8 @@ public class NewContact extends Activity {
 		 //clicking on the "back" button redirects to the main screen
 		 case android.R.id.home:
 			 
+			 
+			 
 			 Intent intent = new Intent(); 
 			 intent.setClass(NewContact.this, MainActivity.class); 
 			 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
