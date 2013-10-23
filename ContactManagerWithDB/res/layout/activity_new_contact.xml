@@ -161,13 +161,13 @@
     <Button
         android:id="@+id/reset_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding = "10dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/new_image"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/new_image"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginRight="23dp"
         android:background="@drawable/blueborder"
+        android:padding="6dp"
+        android:textSize="15sp"
         android:text="Reset Image" />
 
 "

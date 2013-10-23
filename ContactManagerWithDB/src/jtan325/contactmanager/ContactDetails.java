@@ -72,6 +72,10 @@ public class ContactDetails extends Activity {
 		DOB.setText("DOB: " + contactClicked.getDOB());
 		image.setImageBitmap(BitmapFactory.decodeFile(contactClicked.getPhotoPath()));
 		
+		if (contactClicked.getPhotoPath().equals("")){
+			image.setImageResource(R.drawable.aesthetic_2);
+		}
+		
 	}
 	
 	
@@ -128,6 +132,10 @@ public class ContactDetails extends Activity {
 		address.setText("Address: " + contactClicked.getAddress());
 		DOB.setText("DOB: " + contactClicked.getDOB());
 		image.setImageBitmap(BitmapFactory.decodeFile(contactClicked.getPhotoPath()));
+		
+		if (contactClicked.getPhotoPath().equals("")){
+			image.setImageResource(R.drawable.aesthetic_2);
+		}
 		
 	}
 	
