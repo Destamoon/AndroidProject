@@ -6,12 +6,16 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class EditContact extends Activity {
 	
@@ -26,6 +30,9 @@ public class EditContact extends Activity {
 	private EditText email;
 	private EditText address;
 	private EditText DOB;
+	private ImageView image;
+	private static int RESULT_LOAD_IMAGE = 1;
+	private String photoPath = "";
 	
 	
 
@@ -36,6 +43,24 @@ public class EditContact extends Activity {
 		setTitle("Edit");
 		
 		setupContactInfo();
+		
+		
+		
+		image.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				//new action taking you to gallery to select a picture
+				Intent i = new Intent(
+						Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+						 
+						startActivityForResult(i, RESULT_LOAD_IMAGE);
+			}
+		});
+		
+		Log.d(NewContact.TAG, "Able to load image");
+		
 		
 		//customizing the home button on the actionbar
 		getActionBar().setHomeButtonEnabled(true);
@@ -73,6 +98,7 @@ public class EditContact extends Activity {
 		email = (EditText)findViewById(R.id.email_edit);
 		address = (EditText)findViewById(R.id.address_edit);
 		DOB = (EditText)findViewById(R.id.DOB_edit);
+		image= (ImageView)findViewById(R.id.edit_image);
 
 		//loading current contact data into respective the edittext fields
 		firstName.setText(ContactDetails.contactClicked.getFirstName());
@@ -83,8 +109,32 @@ public class EditContact extends Activity {
 		email.setText(ContactDetails.contactClicked.getEmail());
 		address.setText(ContactDetails.contactClicked.getAddress());
 		DOB.setText(ContactDetails.contactClicked.getDOB());
+		image.setImageBitmap(BitmapFactory.decodeFile(ContactDetails.contactClicked.getPhotoPath()));
 		
 	}
+	
+	
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+         
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+ 
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+ 
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            photoPath = cursor.getString(columnIndex);
+            cursor.close();
+            
+            image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+        }
+        
+ }
+	
 	
 	
 	
@@ -124,6 +174,7 @@ public class EditContact extends Activity {
 			 values.put(dbconstants.CONTACT_EMAIL, saveEmail);
 			 values.put(dbconstants.CONTACT_ADDRESS, saveAddress);
 			 values.put(dbconstants.CONTACT_DOB, saveDOB);
+			 values.put(dbconstants.CONTACT_IMAGE, photoPath);
 			
 			 Log.d(NewContact.TAG, "Successfully created contents value for "+ ContactDetails.contactClicked.getFirstName());
 				
