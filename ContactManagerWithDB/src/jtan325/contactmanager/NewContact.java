@@ -31,7 +31,6 @@ public class NewContact extends Activity {
 	
 	private static int RESULT_LOAD_IMAGE = 1;
 	private ImageView imageView;
-	
 	private String photoPath = "";
 	
 
@@ -50,11 +49,13 @@ public class NewContact extends Activity {
 		DOB = (EditText) findViewById(R.id.newDOB);
 		imageView = (ImageView) findViewById(R.id.new_image);
 		
+		//imageview needs to be able to be changed on click
 		imageView.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				
+				//new action taking you to gallery to select a picture
 				Intent i = new Intent(
 						Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 						 
@@ -132,6 +133,7 @@ public class NewContact extends Activity {
 			 values.put(dbconstants.CONTACT_EMAIL, newContact.getEmail());
 			 values.put(dbconstants.CONTACT_ADDRESS, newContact.getAddress());
 			 values.put(dbconstants.CONTACT_DOB, newContact.getDOB());
+			 values.put(dbconstants.CONTACT_IMAGE, newContact.getPhotoPath());
 			
 				
 			 MainActivity.db.insert(dbconstants.TABLE_NAME, null, values);

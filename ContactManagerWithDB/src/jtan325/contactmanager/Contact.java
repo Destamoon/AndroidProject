@@ -13,26 +13,27 @@ public class Contact {
 	private String email="";
 	private String address="";
 	private String DOB="";
-	private String imagePath="";
+	private String photoPath="";
+	
 	
 	//dummy constructor for easy adding of contacts
-	public Contact (int a, String b){
-		id=a;
-		firstName=b;
-	}
+//	public Contact (int a, String b){
+//		id=a;
+//		firstName=b;
+//	}
+//	
+//	
+//
+//	public Contact (int a, String b, String c, String d){
+//		id=a;
+//		firstName=b;
+//		lastName=c;
+//		mobile=d;
+//	}
 	
 	
-
-	public Contact (int a, String b, String c, String d){
-		id=a;
-		firstName=b;
-		lastName=c;
-		mobile=d;
-	}
 	
-	
-	
-	//dummy constructor that has all fields set
+	//official constructor 
 	public Contact(int a, String b, String c, String d, String e, String f, String g, String h, String i, String path){
 		id=a;
 		firstName=b;
@@ -43,7 +44,7 @@ public class Contact {
 		email=g;
 		address=h;
 		DOB=i;
-		imagePath=path;
+		photoPath=path;
 		
 	}
 
@@ -61,12 +62,12 @@ public class Contact {
 	}
 	
 	
-	public String getimagePath() {
-		return imagePath;
+	public String getPhotoPath() {
+		return photoPath;
 	}
 	
-	public void setimagePath(String s) {
-		imagePath = s;
+	public void setphotoPath(String s) {
+		photoPath = s;
 	}
 	
 	public String getFirstName() {

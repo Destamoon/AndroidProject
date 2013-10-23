@@ -17,6 +17,7 @@ public class dbconstants {
 	final static String CONTACT_EMAIL = "email";
 	final static String CONTACT_ADDRESS = "address";
 	final static String CONTACT_DOB = "DOB";
+	final static String CONTACT_IMAGE = "Image";
 	
 	
 	//database create query
@@ -30,7 +31,8 @@ public class dbconstants {
 			+ CONTACT_WORK + " TEXT,"
 			+ CONTACT_EMAIL + " TEXT,"
 			+ CONTACT_ADDRESS + " TEXT,"
-			+ CONTACT_DOB + " TEXT);";
+			+ CONTACT_DOB + " TEXT,"
+			+ CONTACT_IMAGE + " TEXT);";
 			
 	
 	
