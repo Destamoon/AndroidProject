@@ -31,6 +31,8 @@ public class EditContact extends Activity {
 	private EditText address;
 	private EditText DOB;
 	private ImageView image;
+	
+	//not sure why this has to be static
 	private static int RESULT_LOAD_IMAGE = 1;
 	private String photoPath = ContactDetails.contactClicked.getPhotoPath();
 	

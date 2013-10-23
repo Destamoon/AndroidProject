@@ -124,7 +124,7 @@ public class ContactDetails extends Activity {
 		mobile.setText("Mobile: " + contactClicked.getMobile());
 		home.setText("Home: " + contactClicked.getHome());
 		work.setText("Work: " + contactClicked.getWork());
-		email.setText("Emails: " + contactClicked.getEmail());
+		email.setText("Email: " + contactClicked.getEmail());
 		address.setText("Address: " + contactClicked.getAddress());
 		DOB.setText("DOB: " + contactClicked.getDOB());
 		image.setImageBitmap(BitmapFactory.decodeFile(contactClicked.getPhotoPath()));

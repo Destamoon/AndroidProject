@@ -31,6 +31,7 @@ public class NewContact extends Activity {
 	
 	private static int RESULT_LOAD_IMAGE = 1;
 	private ImageView image;
+	private ImageView defaultImage;
 	private String photoPath = "";
 	
 
@@ -48,6 +49,8 @@ public class NewContact extends Activity {
 		address = (EditText) findViewById(R.id.newAddress);
 		DOB = (EditText) findViewById(R.id.newDOB);
 		image = (ImageView) findViewById(R.id.new_image);
+		defaultImage = (ImageView) findViewById(R.id.default_image);
+		
 		
 		//imageview needs to be able to be changed on click
 		image.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +94,7 @@ public class NewContact extends Activity {
 	            cursor.close();
 	            
 	            image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+	            defaultImage.setVisibility(4);
 	        }
 	        
 	 }
