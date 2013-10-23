@@ -6,7 +6,11 @@
     android:orientation="vertical"
     android:background="@drawable/border2">
 
-   
+   <ImageView 
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:id="@+id/new_image" />
+    
 	<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

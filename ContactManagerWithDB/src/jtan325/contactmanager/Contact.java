@@ -13,7 +13,7 @@ public class Contact {
 	private String email="";
 	private String address="";
 	private String DOB="";
-	
+	private String imagePath="";
 	
 	//dummy constructor for easy adding of contacts
 	public Contact (int a, String b){
@@ -33,7 +33,7 @@ public class Contact {
 	
 	
 	//dummy constructor that has all fields set
-	public Contact(int a, String b, String c, String d, String e, String f, String g, String h, String i){
+	public Contact(int a, String b, String c, String d, String e, String f, String g, String h, String i, String path){
 		id=a;
 		firstName=b;
 		lastName = c;
@@ -43,6 +43,7 @@ public class Contact {
 		email=g;
 		address=h;
 		DOB=i;
+		imagePath=path;
 		
 	}
 
@@ -59,6 +60,14 @@ public class Contact {
 		this.id = id;
 	}
 	
+	
+	public String getimagePath() {
+		return imagePath;
+	}
+	
+	public void setimagePath(String s) {
+		imagePath = s;
+	}
 	
 	public String getFirstName() {
 		return firstName;

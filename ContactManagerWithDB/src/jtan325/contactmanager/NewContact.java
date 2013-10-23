@@ -1,15 +1,19 @@
 package jtan325.contactmanager;
 
-import jtan325.contactmanager.R;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class NewContact extends Activity {
 	
@@ -25,6 +29,11 @@ public class NewContact extends Activity {
 	private EditText address;
 	private EditText DOB;
 	
+	private static int RESULT_LOAD_IMAGE = 1;
+	private ImageView imageView;
+	
+	private String photoPath = "";
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +48,22 @@ public class NewContact extends Activity {
 		email = (EditText) findViewById(R.id.newEmail);
 		address = (EditText) findViewById(R.id.newAddress);
 		DOB = (EditText) findViewById(R.id.newDOB);
+		imageView = (ImageView) findViewById(R.id.new_image);
 		
-		
+		imageView.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(
+						Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+						 
+						startActivityForResult(i, RESULT_LOAD_IMAGE);
+			}
+			
+			
+			
+		});
 		
 		//customizing the home button on the actionbar
 		getActionBar().setHomeButtonEnabled(true);
@@ -51,7 +74,25 @@ public class NewContact extends Activity {
 		
 	}
 
-	
+	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	        super.onActivityResult(requestCode, resultCode, data);
+	         
+	        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+	            Uri selectedImage = data.getData();
+	            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+	 
+	            Cursor cursor = getContentResolver().query(selectedImage,
+	                    filePathColumn, null, null, null);
+	            cursor.moveToFirst();
+	 
+	            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+	            photoPath = cursor.getString(columnIndex);
+	            cursor.close();
+	            
+	            imageView.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+	        }
+	        
+	 }
 	
 	
 	
@@ -76,7 +117,7 @@ public class NewContact extends Activity {
 			 String saveAddress=address.getText().toString();;
 			 String saveDOB=DOB.getText().toString();;
 			 
-			 Contact newContact = new Contact (dbconstants.currentId, saveFirstName, saveLastName, saveMobile, saveHome, saveWork, saveEmail, saveAddress, saveDOB);
+			 Contact newContact = new Contact (dbconstants.currentId, saveFirstName, saveLastName, saveMobile, saveHome, saveWork, saveEmail, saveAddress, saveDOB, photoPath);
 			 
 			 
 			 Log.d(TAG, "Attempting to save: " + saveFirstName);

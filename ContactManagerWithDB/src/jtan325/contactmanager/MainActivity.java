@@ -235,8 +235,8 @@ public class MainActivity extends Activity {
 				DOB = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_DOB)); 
 				
 				Log.i("MainActivity", "ID - "+id +" is " + firstName);
-				
-				Contact tryAdd = new Contact(id, firstName, lastName, mobile, home, work, email, address, DOB); 
+				//ADD EXTRA COLUMN IN DATABASE, SAVE PHOTOPATH INTO IT
+				Contact tryAdd = new Contact(id, firstName, lastName, mobile, home, work, email, address, DOB, ""); 
 				boolean toAdd = true; 
 				
 				for (Contact contact : contactsList.getList()) { 
