@@ -176,7 +176,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/backgroundBar"
-        android:background="#788DA9" >
+        android:background="@drawable/border2" >
 
         <EditText
             android:id="@+id/first_name"
@@ -210,13 +210,29 @@
         <ImageView
             android:id="@+id/edit_image"
             android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_height="160dp"
             android:layout_marginLeft="34dp"
+            android:layout_marginTop="0dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
              />
-
         
+ 
+
+
+        <Button
+            android:id="@+id/reset_editImage"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/last_name"
+    
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/blueborder"
+            android:padding="6dp"
+            android:text="Reset Image"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

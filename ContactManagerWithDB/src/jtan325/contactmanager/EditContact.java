@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -35,6 +36,7 @@ public class EditContact extends Activity {
 	//not sure why this has to be static
 	private static int RESULT_LOAD_IMAGE = 1;
 	private String photoPath = ContactDetails.contactClicked.getPhotoPath();
+	private Button reset;
 	
 	
 
@@ -62,6 +64,20 @@ public class EditContact extends Activity {
 		});
 		
 		Log.d(NewContact.TAG, "Able to load image");
+		
+		
+		reset.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				photoPath="";
+//				image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+//				defaultImage.setVisibility(0);	
+				image.setImageResource(R.drawable.aesthetic_2);
+				
+			}
+		});
 		
 		
 		//customizing the home button on the actionbar
@@ -101,6 +117,7 @@ public class EditContact extends Activity {
 		address = (EditText)findViewById(R.id.address_edit);
 		DOB = (EditText)findViewById(R.id.DOB_edit);
 		image= (ImageView)findViewById(R.id.edit_image);
+		reset = (Button) findViewById(R.id.reset_editImage);
 
 		//loading current contact data into respective the edittext fields
 		firstName.setText(ContactDetails.contactClicked.getFirstName());
@@ -112,6 +129,10 @@ public class EditContact extends Activity {
 		address.setText(ContactDetails.contactClicked.getAddress());
 		DOB.setText(ContactDetails.contactClicked.getDOB());
 		image.setImageBitmap(BitmapFactory.decodeFile(ContactDetails.contactClicked.getPhotoPath()));
+		
+		if (ContactDetails.contactClicked.getPhotoPath().equals("")){
+			image.setImageResource(R.drawable.aesthetic_2);
+		}
 		
 	}
 	

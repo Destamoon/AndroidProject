@@ -79,7 +79,8 @@ public class NewContact extends Activity {
 				
 				photoPath="";
 				image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
-				defaultImage.setVisibility(0);	
+				defaultImage.setVisibility(0);
+				image.setBackground(getResources().getDrawable(R.drawable.borderthicker));
 				
 			}
 		});
@@ -111,6 +112,7 @@ public class NewContact extends Activity {
 	            
 	            image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
 	            defaultImage.setVisibility(4);
+	            image.setBackground(null);
 	        }
 	        
 	 }

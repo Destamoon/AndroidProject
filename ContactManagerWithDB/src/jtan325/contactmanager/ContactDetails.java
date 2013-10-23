@@ -135,7 +135,8 @@ public class ContactDetails extends Activity {
 		
 		if (contactClicked.getPhotoPath().equals("")){
 			image.setImageResource(R.drawable.aesthetic_2);
-		}
+		} 
+		 
 		
 	}
 	
