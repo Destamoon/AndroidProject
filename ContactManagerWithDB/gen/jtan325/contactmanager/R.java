@@ -43,15 +43,15 @@ public final class R {
         public static final int DOB_edit=0x7f09000e;
         public static final int DOB_field=0x7f090006;
         public static final int Names_and_pic=0x7f090008;
-        public static final int add_contact=0x7f090024;
+        public static final int add_contact=0x7f090025;
         public static final int address_edit=0x7f09000d;
         public static final int address_field=0x7f090005;
         public static final int backgroundBar=0x7f09000f;
         public static final int contactFields=0x7f090000;
         public static final int contactImage=0x7f090007;
         public static final int default_image=0x7f090015;
-        public static final int delete=0x7f090023;
-        public static final int edit=0x7f090021;
+        public static final int delete=0x7f090024;
+        public static final int edit=0x7f090022;
         public static final int edit_image=0x7f090012;
         public static final int email_edit=0x7f09000c;
         public static final int email_field=0x7f090004;
@@ -59,7 +59,7 @@ public final class R {
         public static final int home_edit=0x7f09000a;
         public static final int home_field=0x7f090002;
         public static final int last_name=0x7f090011;
-        public static final int list_item=0x7f09001f;
+        public static final int list_item=0x7f090020;
         public static final int main_contactList=0x7f090013;
         public static final int mobile_edit=0x7f090009;
         public static final int mobile_field=0x7f090001;
@@ -73,8 +73,9 @@ public final class R {
         public static final int newMobile=0x7f090019;
         public static final int newWork=0x7f09001a;
         public static final int new_image=0x7f090014;
-        public static final int save=0x7f090022;
-        public static final int save_button=0x7f090020;
+        public static final int reset_image=0x7f09001f;
+        public static final int save=0x7f090023;
+        public static final int save_button=0x7f090021;
         public static final int work_edit=0x7f09000b;
         public static final int work_field=0x7f090003;
     }

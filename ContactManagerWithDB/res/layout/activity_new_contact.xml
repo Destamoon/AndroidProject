@@ -158,5 +158,17 @@
         </LinearLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/reset_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding = "10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/new_image"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/blueborder"
+        android:text="Reset Image" />
+
 "
 </RelativeLayout>

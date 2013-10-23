@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -32,6 +33,7 @@ public class NewContact extends Activity {
 	private static int RESULT_LOAD_IMAGE = 1;
 	private ImageView image;
 	private ImageView defaultImage;
+	private Button reset;
 	private String photoPath = "";
 	
 
@@ -50,6 +52,7 @@ public class NewContact extends Activity {
 		DOB = (EditText) findViewById(R.id.newDOB);
 		image = (ImageView) findViewById(R.id.new_image);
 		defaultImage = (ImageView) findViewById(R.id.default_image);
+		reset = (Button) findViewById(R.id.reset_image);
 		
 		
 		//imageview needs to be able to be changed on click
@@ -68,6 +71,19 @@ public class NewContact extends Activity {
 			
 			
 		});
+		
+		reset.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				photoPath="";
+				image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+				defaultImage.setVisibility(0);	
+				
+			}
+		});
+		
 		
 		//customizing the home button on the actionbar
 		getActionBar().setHomeButtonEnabled(true);
