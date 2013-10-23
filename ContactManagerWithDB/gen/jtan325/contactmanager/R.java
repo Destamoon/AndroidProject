@@ -48,12 +48,12 @@ public final class R {
         public static final int contactImage=0x7f090007;
         public static final int delete=0x7f090021;
         public static final int edit=0x7f09001f;
+        public static final int edit_image=0x7f090012;
         public static final int email_edit=0x7f09000c;
         public static final int email_field=0x7f090004;
         public static final int first_name=0x7f090010;
         public static final int home_edit=0x7f09000a;
         public static final int home_field=0x7f090002;
-        public static final int imageButton1=0x7f090012;
         public static final int last_name=0x7f090011;
         public static final int list_item=0x7f09001d;
         public static final int main_contactList=0x7f090013;

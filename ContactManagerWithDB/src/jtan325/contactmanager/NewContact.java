@@ -30,7 +30,7 @@ public class NewContact extends Activity {
 	private EditText DOB;
 	
 	private static int RESULT_LOAD_IMAGE = 1;
-	private ImageView imageView;
+	private ImageView image;
 	private String photoPath = "";
 	
 
@@ -47,10 +47,10 @@ public class NewContact extends Activity {
 		email = (EditText) findViewById(R.id.newEmail);
 		address = (EditText) findViewById(R.id.newAddress);
 		DOB = (EditText) findViewById(R.id.newDOB);
-		imageView = (ImageView) findViewById(R.id.new_image);
+		image = (ImageView) findViewById(R.id.new_image);
 		
 		//imageview needs to be able to be changed on click
-		imageView.setOnClickListener(new View.OnClickListener() {
+		image.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -90,7 +90,7 @@ public class NewContact extends Activity {
 	            photoPath = cursor.getString(columnIndex);
 	            cursor.close();
 	            
-	            imageView.setImageBitmap(BitmapFactory.decodeFile(photoPath));
+	            image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
 	        }
 	        
 	 }
