@@ -32,7 +32,7 @@ public class EditContact extends Activity {
 	private EditText DOB;
 	private ImageView image;
 	private static int RESULT_LOAD_IMAGE = 1;
-	private String photoPath = "";
+	private String photoPath = ContactDetails.contactClicked.getPhotoPath();
 	
 	
 
@@ -190,6 +190,7 @@ public class EditContact extends Activity {
 			 ContactDetails.contactClicked.setEmail(saveEmail);
 			 ContactDetails.contactClicked.setAddress(saveAddress);
 			 ContactDetails.contactClicked.setDOB(saveDOB);
+			 ContactDetails.contactClicked.setPhotoPath(photoPath);
 			 
 			  
 			 finish();

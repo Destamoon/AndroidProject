@@ -66,7 +66,7 @@ public class Contact {
 		return photoPath;
 	}
 	
-	public void setphotoPath(String s) {
+	public void setPhotoPath(String s) {
 		photoPath = s;
 	}
 	
