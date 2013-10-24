@@ -192,8 +192,6 @@ public class MainActivity extends Activity {
 			}
 			
 			
-//			Log.d(NewContact.TAG, "contact clicked = " + ContactDetails.contactClicked.getFirstName());
-			
 			Intent intent = new Intent();
 			intent.setClass(MainActivity.this, ContactDetails.class);
 			startActivity(intent);
@@ -312,7 +310,6 @@ public class MainActivity extends Activity {
 				DOB = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_DOB)); 
 				photoPath = rows.getString(rows.getColumnIndexOrThrow(dbconstants.CONTACT_IMAGE)); 
 				
-//				Log.i("MainActivity", "ID - "+id +" is " + firstName);
 
 				//making a test contact object with the fields extracted
 				Contact tryAdd = new Contact(id, firstName, lastName, mobile, home, work, email, address, DOB, photoPath); 
@@ -321,13 +318,11 @@ public class MainActivity extends Activity {
 				//iterating through the contactList and comparing the test contact object with all the contact objects in the contactList
 				//if the test contact does not equal any contact in the list, it must be a new contact so add to contactList
 				for (Contact contact : contactsList.getList()) { 
-					
-//					Log.i("MainActivity", tryAdd.toString()); 
+
 					
 					//duplicate contact
 					if (contact.equals(tryAdd)) { 
 						toAdd = false; 
-//						Log.i("MainActivity", "Contact " + tryAdd.toString() + " already exists"); 
 					} 
 				}  
 				
@@ -338,7 +333,6 @@ public class MainActivity extends Activity {
 			} while (rows.moveToNext()); 
 		} 
 		
-//		Log.i("MainActivity", "contactList updated with database"); 
 		db.close(); 
 		
 

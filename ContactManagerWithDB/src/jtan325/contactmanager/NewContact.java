@@ -26,7 +26,6 @@ import android.widget.ImageView;
 
 public class NewContact extends Activity {
 	
-//	public final static String TAG = "TestLog";
 	
 
 	private EditText firstName;
@@ -155,8 +154,7 @@ public class NewContact extends Activity {
 			 //creating the new contact object
 			 Contact newContact = new Contact (dbconstants.currentId, saveFirstName, saveLastName, saveMobile, saveHome, saveWork, saveEmail, saveAddress, saveDOB, photoPath);
 			 
-			 
-//			 Log.d(TAG, "Attempting to save: " + saveFirstName);
+			
 			 
 			 //adding the fields of the new contact into the database
 			 MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);

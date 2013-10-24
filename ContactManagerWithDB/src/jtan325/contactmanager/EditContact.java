@@ -71,7 +71,6 @@ public class EditContact extends Activity {
 			}
 		});
 		
-//		Log.d(NewContact.TAG, "Able to load image");
 		
 		
 		//removing the photopath and setting default image if reset is clicked
@@ -181,11 +180,8 @@ public class EditContact extends Activity {
 			 String saveAddress = address.getText().toString();
 			 String saveDOB = DOB.getText().toString();
 			 
-			
 			 
 		
-			 
-//			 Log.d(NewContact.TAG, "Attempting to save editted details: " + saveFirstName);
 			 
 			 //updating and changing the database values for the editted values
 			 MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
@@ -200,7 +196,6 @@ public class EditContact extends Activity {
 			 values.put(dbconstants.CONTACT_DOB, saveDOB);
 			 values.put(dbconstants.CONTACT_IMAGE, photoPath);
 			
-//			 Log.d(NewContact.TAG, "Successfully created contents value for "+ ContactDetails.contactClicked.getFirstName());
 				
 			 MainActivity.db.update(dbconstants.TABLE_NAME, values, dbconstants.CONTACT_FIRST+ " = ?", new String[] {ContactDetails.contactClicked.getFirstName()});
 			 MainActivity.db.close();
@@ -247,12 +242,8 @@ public class EditContact extends Activity {
 								
 					//removing the value from the database 
 					MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
-//					Log.d(NewContact.TAG, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'");
 					MainActivity.db.delete(dbconstants.TABLE_NAME, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'", null); 
 					
-					
-//					String name = ContactDetails.contactClicked.toString();
-//					Log.d(NewContact.TAG, "Successfully deleted " +name+" from database");
 				
 					//removing the contact from the contactList 
 					contactsList.delete(ContactDetails.contactClicked);
