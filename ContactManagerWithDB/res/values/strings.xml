@@ -22,6 +22,24 @@
     
     <string name="search">Search </string>
     <string name="default_image">Default Image </string>
+    
+    <string name="first_label">First name </string>
+    <string name="last_label">Last name </string>
+    <string name="mobile_label">Mobile </string>
+    <string name="work_label">Work </string>
+    <string name="email_label">Email </string>
+    <string name="address_label">Address </string>
+    <string name="home_label">Home </string>
+    <string name="dob_label">DOB </string>
+    
+  	 <string name="first_ghost">Enter name </string>
+    <string name="last_ghost">Enter name </string>
+    <string name="mobile_ghost">Enter mobile </string>
+    <string name="work_ghost">Enter work </string>
+    <string name="email_ghost">Enter email </string>
+    <string name="address_ghost">Enter address </string>
+    <string name="home_ghost">Enter home </string>
+    <string name="dob_ghost">Enter DOB </string>
 
     
     

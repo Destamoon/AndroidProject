@@ -44,42 +44,42 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="First name" />
+                android:text="@string/first_label" />
 
             <EditText
                 android:id="@+id/newFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter name" />
+                android:hint="@string/first_ghost" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Last name" />
+                android:text="@string/last_label" />
 
             <EditText
                 android:id="@+id/newLastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter name" />
+                android:hint="@string/last_ghost" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Mobile" />
+                android:text="@string/mobile_label" />
 
             <EditText
                 android:id="@+id/newMobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter mobile"
+                android:hint="@string/mobile_ghost"
                 android:inputType="phone" />
 
             <TextView
@@ -87,14 +87,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Home" />
+                android:text="@string/home_label" />
 
             <EditText
                 android:id="@+id/newWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter home"
+                android:hint="@string/home_ghost"
                 android:inputType="phone" />
 
             <TextView
@@ -102,14 +102,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Work" />
+                android:text="@string/work_label" />
 
             <EditText
                 android:id="@+id/newHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter work"
+                android:hint="@string/work_ghost"
                 android:inputType="phone" />
 
             <TextView
@@ -117,14 +117,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Email" />
+                android:text="@string/email_label" />
 
             <EditText
                 android:id="@+id/newEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter email"
+                android:hint="@string/email_ghost"
                 android:inputType="textEmailAddress" />
 
             <TextView
@@ -132,28 +132,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="Address" />
+                android:text="@string/address_label" />
 
             <EditText
                 android:id="@+id/newAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter address" />
+                android:hint="@string/address_ghost" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:text="DOB" />
+                android:text="@string/dob_label" />
 
             <EditText
                 android:id="@+id/newDOB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter DOB"
+                android:hint="@string/dob_ghost"
                 android:inputType="date" />
         </LinearLayout>
     </ScrollView>
@@ -164,10 +164,11 @@
         android:layout_height="35dp"
         android:layout_alignBottom="@+id/new_image"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="23dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/blueborder"
         android:padding="6dp"
         android:textSize="15sp"
-        android:text="Reset Image" />
+        android:text="@string/reset_image" />
 
 </RelativeLayout>
