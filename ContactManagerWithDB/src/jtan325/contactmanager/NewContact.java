@@ -8,19 +8,27 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+
+/**
+ * This is the activity that allows a new contact to be created. 
+ * 
+ * @author jtan325
+ *
+ */
+
 public class NewContact extends Activity {
 	
-	public final static String TAG = "TestLog";
+//	public final static String TAG = "TestLog";
 	
-	private ContactsList contactsList = ContactsList.getInstance();
+
 	private EditText firstName;
 	private EditText lastName;
 	private EditText mobile;
@@ -30,7 +38,7 @@ public class NewContact extends Activity {
 	private EditText address;
 	private EditText DOB;
 	
-	private static int RESULT_LOAD_IMAGE = 1;
+
 	private ImageView image;
 	private ImageView defaultImage;
 	private Button reset;
@@ -42,6 +50,7 @@ public class NewContact extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_contact);
 		
+		//matching the edittext fields and button with XML
 		firstName = (EditText) findViewById(R.id.newFirstName);
 		lastName = (EditText) findViewById(R.id.newLastName);
 		mobile = (EditText) findViewById(R.id.newMobile);
@@ -65,13 +74,15 @@ public class NewContact extends Activity {
 				Intent i = new Intent(
 						Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 						 
-						startActivityForResult(i, RESULT_LOAD_IMAGE);
+						startActivityForResult(i, dbconstants.RESULT_LOAD_IMAGE);
 			}
 			
 			
 			
 		});
 		
+		
+		//resetting the image to default image 
 		reset.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -91,14 +102,16 @@ public class NewContact extends Activity {
 		getActionBar().setIcon(R.drawable.arrow3);
 		
 		setTitle("New Contact");
-		
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 	}
 
+	
+	//method that is executed once a picture is selected from the gallery and sets the image
 	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	        super.onActivityResult(requestCode, resultCode, data);
 	         
-	        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+	        if (requestCode == dbconstants.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
 	            Uri selectedImage = data.getData();
 	            String[] filePathColumn = { MediaStore.Images.Media.DATA };
 	 
@@ -125,12 +138,11 @@ public class NewContact extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) { 
 		 switch (item.getItemId()) { 
 		 
-		//clicking on the "save" button saves the new content and redirects to the main screen, however in this prototype it is just adding
-		//a dummy contact 'Jordan'
+		//clicking on the "save" button saves the new content and redirects to the main screen
 		 case R.id.save_button: 
 			 
 			 
-			 //saving new contact with only firstName field
+			 //extracting all the fields on the edittexts
 			 String saveFirstName = firstName.getText().toString();
 			 String saveLastName = lastName.getText().toString();
 			 String saveMobile = mobile.getText().toString();
@@ -140,11 +152,13 @@ public class NewContact extends Activity {
 			 String saveAddress=address.getText().toString();;
 			 String saveDOB=DOB.getText().toString();;
 			 
+			 //creating the new contact object
 			 Contact newContact = new Contact (dbconstants.currentId, saveFirstName, saveLastName, saveMobile, saveHome, saveWork, saveEmail, saveAddress, saveDOB, photoPath);
 			 
 			 
-			 Log.d(TAG, "Attempting to save: " + saveFirstName);
+//			 Log.d(TAG, "Attempting to save: " + saveFirstName);
 			 
+			 //adding the fields of the new contact into the database
 			 MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
 			 ContentValues values = new ContentValues();
 			 values.put(dbconstants.CONTACT_FIRST, newContact.getFirstName());
@@ -161,6 +175,7 @@ public class NewContact extends Activity {
 			 MainActivity.db.insert(dbconstants.TABLE_NAME, null, values);
 			 MainActivity.db.close();
 			 
+			 //incrementing the ID counter for the next contact created
 			 dbconstants.currentId++;
 			 
 			 finish();
@@ -186,6 +201,7 @@ public class NewContact extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_new_contact, menu);
 		return true;

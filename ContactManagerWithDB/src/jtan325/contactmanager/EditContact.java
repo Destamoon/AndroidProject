@@ -10,19 +10,28 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+
+/**
+ * This is the activity that allows a contact's details to be editted. 
+ * 
+ * @author jtan325
+ *
+ */
 
 public class EditContact extends Activity {
 	
 	
 	private ContactsList contactsList = ContactsList.getInstance();
 	
+	//editable fields
 	private EditText firstName;
 	private EditText lastName;
 	private EditText mobile;
@@ -33,8 +42,7 @@ public class EditContact extends Activity {
 	private EditText DOB;
 	private ImageView image;
 	
-	//not sure why this has to be static
-	private static int RESULT_LOAD_IMAGE = 1;
+	//this field stores the path for the image selected
 	private String photoPath = ContactDetails.contactClicked.getPhotoPath();
 	private Button reset;
 	
@@ -49,7 +57,7 @@ public class EditContact extends Activity {
 		setupContactInfo();
 		
 		
-		
+		//allows the image to be clickable so you can change the picture when clicked
 		image.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -59,21 +67,20 @@ public class EditContact extends Activity {
 				Intent i = new Intent(
 						Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 						 
-						startActivityForResult(i, RESULT_LOAD_IMAGE);
+						startActivityForResult(i, dbconstants.RESULT_LOAD_IMAGE);
 			}
 		});
 		
-		Log.d(NewContact.TAG, "Able to load image");
+//		Log.d(NewContact.TAG, "Able to load image");
 		
 		
+		//removing the photopath and setting default image if reset is clicked
 		reset.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				
 				photoPath="";
-//				image.setImageBitmap(BitmapFactory.decodeFile(photoPath));
-//				defaultImage.setVisibility(0);	
 				image.setImageResource(R.drawable.aesthetic_2);
 				
 			}
@@ -87,23 +94,16 @@ public class EditContact extends Activity {
 		
 		
 		firstName =(EditText) findViewById(R.id.first_name);
-		firstName.setFocusable(false);
+		firstName.setFocusable(true);
 		
-		firstName.setOnClickListener( new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				firstName.setFocusableInTouchMode(true);
-				
-			}
-		});
-		
-		
+		//makes the keyboard from auotmatically coming up
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		
 		
 	}
 	
 	
+	//method that sets up contact info to be displayed. 
 	private void setupContactInfo(){
 		
 		
@@ -130,6 +130,7 @@ public class EditContact extends Activity {
 		DOB.setText(ContactDetails.contactClicked.getDOB());
 		image.setImageBitmap(BitmapFactory.decodeFile(ContactDetails.contactClicked.getPhotoPath()));
 		
+		//displaying default image if contact has no photopath
 		if (ContactDetails.contactClicked.getPhotoPath().equals("")){
 			image.setImageResource(R.drawable.aesthetic_2);
 		}
@@ -137,11 +138,11 @@ public class EditContact extends Activity {
 	}
 	
 	
-	
+	//method that is executed once a picture is selected from the gallery and sets the image
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
          
-        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+        if (requestCode == dbconstants.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
  
@@ -184,7 +185,7 @@ public class EditContact extends Activity {
 			 
 		
 			 
-			 Log.d(NewContact.TAG, "Attempting to save editted details: " + saveFirstName);
+//			 Log.d(NewContact.TAG, "Attempting to save editted details: " + saveFirstName);
 			 
 			 //updating and changing the database values for the editted values
 			 MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
@@ -199,7 +200,7 @@ public class EditContact extends Activity {
 			 values.put(dbconstants.CONTACT_DOB, saveDOB);
 			 values.put(dbconstants.CONTACT_IMAGE, photoPath);
 			
-			 Log.d(NewContact.TAG, "Successfully created contents value for "+ ContactDetails.contactClicked.getFirstName());
+//			 Log.d(NewContact.TAG, "Successfully created contents value for "+ ContactDetails.contactClicked.getFirstName());
 				
 			 MainActivity.db.update(dbconstants.TABLE_NAME, values, dbconstants.CONTACT_FIRST+ " = ?", new String[] {ContactDetails.contactClicked.getFirstName()});
 			 MainActivity.db.close();
@@ -246,18 +247,19 @@ public class EditContact extends Activity {
 								
 					//removing the value from the database 
 					MainActivity.db = openOrCreateDatabase(dbconstants.DATABASE_NAME,MODE_PRIVATE, null);
-					Log.d(NewContact.TAG, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'");
-					boolean deleted = MainActivity.db.delete(dbconstants.TABLE_NAME, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'", null) >0; 
+//					Log.d(NewContact.TAG, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'");
+					MainActivity.db.delete(dbconstants.TABLE_NAME, dbconstants.CONTACT_ID + " ='" + ContactDetails.contactClicked.getId()+ "'", null); 
 					
-					//removing the contact from the contactList 
-					String name = ContactDetails.contactClicked.toString();
-					Log.d(NewContact.TAG, "Successfully deleted " +name+" from database");
+					
+//					String name = ContactDetails.contactClicked.toString();
+//					Log.d(NewContact.TAG, "Successfully deleted " +name+" from database");
 				
+					//removing the contact from the contactList 
 					contactsList.delete(ContactDetails.contactClicked);
 					MainActivity.db.close();
 					 
 					//going 2 screens back to the main activity			
-					Intent a = new Intent(EditContact.this,MainActivity.class);
+					Intent a = new Intent(EditContact.this, MainActivity.class);
 					a.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(a);
 								
@@ -278,6 +280,7 @@ public class EditContact extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.edit_contact, menu);
 		return true;

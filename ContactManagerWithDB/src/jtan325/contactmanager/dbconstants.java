@@ -1,8 +1,13 @@
 package jtan325.contactmanager;
 
 
-
-//Class that just contains constants used for the database
+/**
+ * This class just contains constants used for the database. I was not smart enough to use a full database helper class.
+ * 
+ * @author jtan325
+ *
+ */
+//
 public class dbconstants {
 	
 	//database columns fields
@@ -39,6 +44,8 @@ public class dbconstants {
 	//an incremented id field used to ensure each contact created has a unique id 
 	protected static int currentId = 0;
 	
+	//field used for image stuff
+	protected static int RESULT_LOAD_IMAGE = 1;
 	
 
 }

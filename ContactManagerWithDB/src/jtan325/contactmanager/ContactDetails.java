@@ -11,10 +11,16 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * This is the activity that shows the contact's details. It shows the contact's image as well as all their fields.
+ * 
+ * @author jtan325
+ *
+ */
+
 public class ContactDetails extends Activity {
 	
-
-
+	//static field for storing the contact that was clicked from the contactList
 	protected static Contact contactClicked;
 	
 
@@ -48,11 +54,8 @@ public class ContactDetails extends Activity {
 	}
 	
 	
-	//this method sets up the contact details text to be displayed from a contact, first it makes the dummy contact and then 
-	//it sets all the textViews with the correct text to display
+	//this method sets up the contact details text to be displayed from a contact
 	private void setupContactInfo(){
-		
-
 		
 		
 		mobile = (TextView)findViewById(R.id.mobile_field);
@@ -63,7 +66,7 @@ public class ContactDetails extends Activity {
 		DOB = (TextView)findViewById(R.id.DOB_field);
 		image= (ImageView)findViewById(R.id.contactImage);
 
-		
+		//setting field names
 		mobile.setText("Mobile: " + contactClicked.getMobile());
 		home.setText("Home: " + contactClicked.getHome());
 		work.setText("Work: " + contactClicked.getWork());
@@ -72,6 +75,7 @@ public class ContactDetails extends Activity {
 		DOB.setText("DOB: " + contactClicked.getDOB());
 		image.setImageBitmap(BitmapFactory.decodeFile(contactClicked.getPhotoPath()));
 		
+		//setting default image if contact has no photopath
 		if (contactClicked.getPhotoPath().equals("")){
 			image.setImageResource(R.drawable.aesthetic_2);
 		}
@@ -113,18 +117,20 @@ public class ContactDetails extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.contact_details, menu);
 		return true;
 	}
 	
 	
+	//method is called when coming back from the Edit Contact screen
 	public void onResume(){
 		
 		super.onResume();
-		
 		setTitle(contactClicked.getFirstName() + " " + contactClicked.getLastName());
 		
+		//contact details need to be freshed and reloaded if they have been editted
 		mobile.setText("Mobile: " + contactClicked.getMobile());
 		home.setText("Home: " + contactClicked.getHome());
 		work.setText("Work: " + contactClicked.getWork());

@@ -1,7 +1,13 @@
 package jtan325.contactmanager;
 
-import java.util.Comparator;
-
+/**
+ * Contact class for contact objects
+ * This class represents a contact with the fields: id, first name, last name, mobile, home phone, work phone,
+ * email address, physical address, date of birth and photopath.
+ * 
+ * @author jtan325
+ *
+ */
 public class Contact {
 	
 	private int id=0;
@@ -15,23 +21,7 @@ public class Contact {
 	private String DOB="";
 	private String photoPath="";
 	
-	
-	//dummy constructor for easy adding of contacts
-//	public Contact (int a, String b){
-//		id=a;
-//		firstName=b;
-//	}
-//	
-//	
-//
-//	public Contact (int a, String b, String c, String d){
-//		id=a;
-//		firstName=b;
-//		lastName=c;
-//		mobile=d;
-//	}
-	
-	
+		
 	
 	//official constructor 
 	public Contact(int a, String b, String c, String d, String e, String f, String g, String h, String i, String path){
@@ -150,12 +140,13 @@ public class Contact {
 	}
 	
 	
-	
+	//overwriting toString to display first name
 	public String toString(){
 		return firstName;
 		
 	}
 	
+	//overwriting equals to compare contact ID's
 	public boolean equals(Contact contact) { 
 		if (this.getId() == contact.getId()) { 
 			return true; 
@@ -164,34 +155,6 @@ public class Contact {
 		}
 	}
 	
-	//first name comparator
-	public static class firstNameComparator implements Comparator<Contact>{
-
-		@Override
-		public int compare(Contact first, Contact second) {
-			
-			return first.getFirstName().compareTo(second.getFirstName());
-		}
-	}
 	
-	//last name comparator
-	public static class lastNameComparator implements Comparator<Contact>{
-
-		@Override
-		public int compare(Contact first, Contact second) {
-			
-			return first.getLastName().compareTo(second.getLastName());
-		}
-	}
-	
-	//phone number comparator
-		public static class phoneComparator implements Comparator<Contact>{
-
-			@Override
-			public int compare(Contact first, Contact second) {
-				
-				return first.getMobile().compareTo(second.getMobile());
-			}
-		}
 	
 }
