@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * This is the activity that shows the contact's details. It shows the contact's image as well as all their fields.
+ * This is the activity that shows the contact's details. It shows the contact's 
+ * image as well as all their fields. The left arrow takes you back to the main activity.
+ * The edit button takes you to the edit screen where you can edit the contact details.
  * 
  * @author jtan325
  *

@@ -20,7 +20,10 @@ import android.widget.ImageView;
 
 
 /**
- * This is the activity that allows a contact's details to be editted. 
+ * This is the activity that allows a contact's details to be editted. The back arrow takes you
+ * back to the contact details screen. The save button saves the new fields for the contact.
+ * The X button gives a prompt and then proceeds to delete the contact and returns you to the
+ * main activity.
  * 
  * @author jtan325
  *

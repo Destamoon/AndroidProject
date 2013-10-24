@@ -18,7 +18,10 @@ import android.widget.ImageView;
 
 
 /**
- * This is the activity that allows a new contact to be created. 
+ * This is the activity that allows a new contact to be created by editing the fields of the
+ * new contact. The left arrow on the actionbar takes you back to the main activity and any changes
+ * made will not be saved. The save button will save the fields into a new contact and 
+ * add it to the contact list.
  * 
  * @author jtan325
  *

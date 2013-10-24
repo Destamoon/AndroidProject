@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -29,6 +30,8 @@ import android.widget.TextView;
 
 /**
  *This is the main activity class where magic happens.
+ *The top left button on the actionbar opens up a dialog for sorting, the top right button
+ *opens up a new screen for adding a contact.
  * 
  * @author jtan325
  *
@@ -126,6 +129,10 @@ public class MainActivity extends Activity {
 		//making fast scroll available if the contact list is very large
 		contacts.setFastScrollEnabled(true);
 	
+		//stops the keyboard from auto appearing on startup
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+				
+		
 		//updates the database and sets up the listView to be displayed
 		updateContactList();
 		setupContactListView();
